@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class TaskDto {
-    private int id;
+    private long id;
 
     private String name;
 
