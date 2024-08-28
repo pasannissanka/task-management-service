@@ -54,9 +54,9 @@ public class TaskController extends BaseController {
     }
 
     @DeleteMapping("/{taskId}")
-    public ResponseEntity<ResponseDto<Void>> deleteTask(@PathVariable("taskId") Long taskId) {
+    public ResponseEntity<ResponseDto<Boolean>> deleteTask(@PathVariable("taskId") Long taskId) {
         logger.info("Deleting task with id [{}]", taskId);
-        taskService.deleteTask(taskId);
-        return ResponseEntity.ok(ResponseDto.success(null, "Task deleted successfully"));
+        Boolean success = taskService.deleteTask(taskId);
+        return ResponseEntity.ok(ResponseDto.success(success, "Task deleted successfully"));
     }
 }

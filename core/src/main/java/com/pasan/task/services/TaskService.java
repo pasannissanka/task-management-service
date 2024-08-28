@@ -15,7 +15,7 @@ public interface TaskService {
      * @param taskDto task dto
      * @return created task dto
      */
-    public TaskDto createTask(TaskDto taskDto);
+    TaskDto createTask(TaskDto taskDto);
 
     /**
      * Update a task
@@ -24,7 +24,7 @@ public interface TaskService {
      * @param taskDto task dto
      * @return updated task dto
      */
-    public TaskDto updateTask(Long taskId, TaskDto taskDto);
+    TaskDto updateTask(Long taskId, TaskDto taskDto);
 
     /**
      * Get a task
@@ -32,19 +32,19 @@ public interface TaskService {
      * @param taskId task id
      * @return task dto
      */
-    public TaskDto getTask(Long taskId);
+    TaskDto getTask(Long taskId);
 
     /**
      * Delete a task
      *
      * @param taskId task id
      */
-    public boolean deleteTask(Long taskId);
+    Boolean deleteTask(Long taskId);
 
     /**
      * Get all tasks
      *
      * @return list of task dtos
      */
-    public List<TaskDto> getAllTasks();
+    List<TaskDto> getAllTasks();
 }

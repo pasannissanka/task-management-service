@@ -28,7 +28,7 @@ public class TaskServiceImpl implements TaskService {
 
     /**
      * @param taskDto task dto
-     * @return
+     * @return created task dto
      */
     @Override
     public TaskDto createTask(TaskDto taskDto) {
@@ -50,7 +50,7 @@ public class TaskServiceImpl implements TaskService {
     /**
      * @param taskId  task id
      * @param taskDto task dto
-     * @return
+     * @return updated task dto
      */
     @Override
     public TaskDto updateTask(Long taskId, TaskDto taskDto) {
@@ -70,7 +70,7 @@ public class TaskServiceImpl implements TaskService {
 
     /**
      * @param taskId task id
-     * @return
+     * @return task dto
      */
     @Override
     public TaskDto getTask(Long taskId) {
@@ -86,10 +86,10 @@ public class TaskServiceImpl implements TaskService {
 
     /**
      * @param taskId task id
-     * @return
+     * @return true if task deleted successfully
      */
     @Override
-    public boolean deleteTask(Long taskId) {
+    public Boolean deleteTask(Long taskId) {
         logger.info("Deleting task with id [{}]", taskId);
 
         Task task = taskRepository.findById(taskId).orElseThrow(() ->
@@ -102,7 +102,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     /**
-     * @return
+     * @return list of task dtos
      */
     @Override
     public List<TaskDto> getAllTasks() {
