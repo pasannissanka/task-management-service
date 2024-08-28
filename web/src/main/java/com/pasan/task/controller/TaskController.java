@@ -3,6 +3,7 @@ package com.pasan.task.controller;
 import com.pasan.task.beans.dtos.ResponseDto;
 import com.pasan.task.beans.dtos.TaskDto;
 import com.pasan.task.services.TaskService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class TaskController extends BaseController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseDto<TaskDto>> createTask(@RequestBody() TaskDto taskDto) {
+    public ResponseEntity<ResponseDto<TaskDto>> createTask(@Valid @RequestBody() TaskDto taskDto) {
         logger.info("Creating new task with data [{}]", taskDto);
         TaskDto createdTask = taskService.createTask(taskDto);
         return ResponseEntity.ok(ResponseDto.success(createdTask, "Task created successfully"));
@@ -46,7 +47,7 @@ public class TaskController extends BaseController {
     }
 
     @PutMapping("/{taskId}")
-    public ResponseEntity<ResponseDto<TaskDto>> updateTask(@PathVariable("taskId") Long taskId, @RequestBody TaskDto taskDto) {
+    public ResponseEntity<ResponseDto<TaskDto>> updateTask(@PathVariable("taskId") Long taskId, @Valid @RequestBody TaskDto taskDto) {
         logger.info("Updating task with id [{}]", taskId);
         TaskDto updatedTask = taskService.updateTask(taskId, taskDto);
         return ResponseEntity.ok(ResponseDto.success(updatedTask, "Task updated successfully"));

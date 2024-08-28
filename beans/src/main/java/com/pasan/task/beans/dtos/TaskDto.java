@@ -2,6 +2,8 @@ package com.pasan.task.beans.dtos;
 
 import com.pasan.task.beans.entities.Task;
 import com.pasan.task.beans.enums.Priority;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,13 +19,17 @@ import lombok.NoArgsConstructor;
 public class TaskDto {
     private long id;
 
+    @NotBlank(message = "Name is required")
     private String name;
 
+    @NotNull(message = "Description is required")
     private String description;
 
+    @NotNull(message = "Priority is required")
     private Priority priority;
 
-    private boolean completed;
+    @NotNull(message = "Completed status is required")
+    private Boolean completed;
 
     /**
      * Convert Task entity to TaskDto

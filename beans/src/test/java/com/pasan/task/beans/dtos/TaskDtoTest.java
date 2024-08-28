@@ -27,7 +27,7 @@ public class TaskDtoTest {
         assertEquals(task.getName(), taskDto.getName());
         assertEquals(task.getDescription(), taskDto.getDescription());
         assertEquals(Priority.valueOf(task.getPriority()), taskDto.getPriority());
-        assertEquals(task.isCompleted(), taskDto.isCompleted());
+        assertEquals(task.isCompleted(), taskDto.getCompleted());
     }
 
     private Task createTask() {

@@ -39,7 +39,7 @@ public class TaskServiceImpl implements TaskService {
                         .name(taskDto.getName())
                         .description(taskDto.getDescription())
                         .priority(taskDto.getPriority().name())
-                        .completed(taskDto.isCompleted())
+                        .completed(taskDto.getCompleted())
                         .build()
         );
 
@@ -62,7 +62,7 @@ public class TaskServiceImpl implements TaskService {
         task.setName(taskDto.getName());
         task.setDescription(taskDto.getDescription());
         task.setPriority(taskDto.getPriority().name());
-        task.setCompleted(taskDto.isCompleted());
+        task.setCompleted(taskDto.getCompleted());
 
         logger.info("Task updated with id [{}]", task.getId());
         return TaskDto.from(taskRepository.save(task));
