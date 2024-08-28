@@ -1,4 +1,4 @@
-package com.pasan.beans.enums;
+package com.pasan.task.beans.enums;
 
 /**
  * Task Priority

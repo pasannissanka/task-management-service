@@ -1,4 +1,4 @@
-package com.pasan.beans.dtos;
+package com.pasan.task.beans.dtos;
 
 import org.testng.annotations.Test;
 

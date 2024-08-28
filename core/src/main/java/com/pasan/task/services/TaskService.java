@@ -1,6 +1,6 @@
-package com.pasan.services;
+package com.pasan.task.services;
 
-import com.pasan.beans.dtos.TaskDto;
+import com.pasan.task.beans.dtos.TaskDto;
 
 import java.util.List;
 

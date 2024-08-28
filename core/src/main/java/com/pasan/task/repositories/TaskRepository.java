@@ -1,6 +1,6 @@
-package com.pasan.repositories;
+package com.pasan.task.repositories;
 
-import com.pasan.beans.entities.Task;
+import com.pasan.task.beans.entities.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

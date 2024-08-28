@@ -1,4 +1,4 @@
-package com.pasan.beans.entities;
+package com.pasan.task.beans.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,5 +28,5 @@ public class Task {
 
     private String priority;
 
-    private boolean isCompleted;
+    private boolean completed;
 }

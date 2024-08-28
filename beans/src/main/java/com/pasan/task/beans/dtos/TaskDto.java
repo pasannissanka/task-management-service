@@ -1,7 +1,7 @@
-package com.pasan.beans.dtos;
+package com.pasan.task.beans.dtos;
 
-import com.pasan.beans.entities.Task;
-import com.pasan.beans.enums.Priority;
+import com.pasan.task.beans.entities.Task;
+import com.pasan.task.beans.enums.Priority;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +23,7 @@ public class TaskDto {
 
     private Priority priority;
 
-    private boolean isCompleted;
+    private boolean completed;
 
     /**
      * Convert Task entity to TaskDto
@@ -36,7 +36,7 @@ public class TaskDto {
                 .name(task.getName())
                 .description(task.getDescription())
                 .priority(Priority.valueOf(task.getPriority()))
-                .isCompleted(task.isCompleted())
+                .completed(task.isCompleted())
                 .build();
     }
 }

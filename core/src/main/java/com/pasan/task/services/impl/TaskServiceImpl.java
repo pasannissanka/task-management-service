@@ -1,12 +1,13 @@
-package com.pasan.services.impl;
+package com.pasan.task.services.impl;
 
-import com.pasan.beans.dtos.TaskDto;
-import com.pasan.beans.entities.Task;
-import com.pasan.beans.exceptions.NotFoundException;
-import com.pasan.repositories.TaskRepository;
-import com.pasan.services.TaskService;
+import com.pasan.task.beans.dtos.TaskDto;
+import com.pasan.task.beans.entities.Task;
+import com.pasan.task.beans.exceptions.NotFoundException;
+import com.pasan.task.repositories.TaskRepository;
+import com.pasan.task.services.TaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class TaskServiceImpl implements TaskService {
 
     private final Logger logger = LoggerFactory.getLogger(TaskServiceImpl.class);
 
+    @Autowired
     public TaskServiceImpl(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
@@ -37,7 +39,7 @@ public class TaskServiceImpl implements TaskService {
                         .name(taskDto.getName())
                         .description(taskDto.getDescription())
                         .priority(taskDto.getPriority().name())
-                        .isCompleted(taskDto.isCompleted())
+                        .completed(taskDto.isCompleted())
                         .build()
         );
 
@@ -104,7 +106,6 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public List<TaskDto> getAllTasks() {
-        logger.info("Getting all tasks");
         return taskRepository.findAll()
                 .stream()
                 .map(TaskDto::from)

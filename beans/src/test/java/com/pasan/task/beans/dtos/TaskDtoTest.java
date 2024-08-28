@@ -1,7 +1,7 @@
-package com.pasan.beans.dtos;
+package com.pasan.task.beans.dtos;
 
-import com.pasan.beans.entities.Task;
-import com.pasan.beans.enums.Priority;
+import com.pasan.task.beans.entities.Task;
+import com.pasan.task.beans.enums.Priority;
 import org.testng.annotations.Test;
 
 import java.util.Random;
