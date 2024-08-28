@@ -1,4 +1,4 @@
-package com.pasan;
+package com.pasan.beans;
 
 import static org.junit.Assert.assertTrue;
 
