@@ -1,0 +1,29 @@
+version: '2'
+services:
+  task-management-service:
+    depends_on:
+      - db
+    container_name: task-management-service
+    build:
+      context: .
+    ports:
+      - "8081:8080"
+    networks:
+      - spring-cloud-network
+    environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/JOKES_DB
+        SPRING_DATASOURCE_USERNAME: user
+        SPRING_DATASOURCE_PASSWORD: user
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: JOKES_DB
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    networks:
+        - spring-cloud-network
+networks:
+  spring-cloud-network:
+    driver: bridge
