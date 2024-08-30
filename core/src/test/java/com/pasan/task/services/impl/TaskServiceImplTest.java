@@ -1,5 +1,6 @@
 package com.pasan.task.services.impl;
 
+import com.pasan.task.beans.constants.ErrorMessages;
 import com.pasan.task.beans.dtos.TaskDto;
 import com.pasan.task.beans.entities.Task;
 import com.pasan.task.beans.enums.Priority;
@@ -17,7 +18,9 @@ import static org.testng.Assert.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 
-
+/**
+ * Task service Unit tests
+ */
 public class TaskServiceImplTest {
 
     @Mock
@@ -70,7 +73,7 @@ public class TaskServiceImplTest {
 
     @Test(
             expectedExceptions = NotFoundException.class,
-            expectedExceptionsMessageRegExp = "Task not found"
+            expectedExceptionsMessageRegExp = ErrorMessages.TASK_NOT_FOUND
     )
     public void should_UpdateTask_throw_NotFoundException() {
         Task task = createTask("Task 1", "Task 1 description", Priority.HIGH, false);
@@ -100,7 +103,7 @@ public class TaskServiceImplTest {
 
     @Test(
             expectedExceptions = NotFoundException.class,
-            expectedExceptionsMessageRegExp = "Task not found"
+            expectedExceptionsMessageRegExp = ErrorMessages.TASK_NOT_FOUND
     )
     public void should_GetTask_throw_NotFoundException() {
         Task task = createTask("Task 1", "Task 1 description", Priority.HIGH, false);
@@ -123,7 +126,7 @@ public class TaskServiceImplTest {
 
     @Test(
             expectedExceptions = NotFoundException.class,
-            expectedExceptionsMessageRegExp = "Task not found"
+            expectedExceptionsMessageRegExp = ErrorMessages.TASK_NOT_FOUND
     )
     public void should_DeleteTask_throw_NotFoundException() {
         Task task = createTask("Task 1", "Task 1 description", Priority.HIGH, false);

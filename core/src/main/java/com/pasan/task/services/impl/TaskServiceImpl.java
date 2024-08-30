@@ -1,5 +1,6 @@
 package com.pasan.task.services.impl;
 
+import com.pasan.task.beans.constants.ErrorMessages;
 import com.pasan.task.beans.dtos.TaskDto;
 import com.pasan.task.beans.entities.Task;
 import com.pasan.task.beans.exceptions.NotFoundException;
@@ -57,7 +58,7 @@ public class TaskServiceImpl implements TaskService {
         logger.info("Updating task with id [{}], data [{}]", taskId, taskDto);
 
         Task task = taskRepository.findById(taskId).orElseThrow(() ->
-                new NotFoundException("Task not found", String.format("Task with id [%d] not found", taskId))
+                new NotFoundException(ErrorMessages.TASK_NOT_FOUND, String.format("Task with id [%d] not found", taskId))
         );
         logger.debug("Task found [{}]", task);
 
@@ -80,7 +81,7 @@ public class TaskServiceImpl implements TaskService {
         logger.info("Getting task with id [{}]", taskId);
 
         Task task = taskRepository.findById(taskId).orElseThrow(() ->
-                new NotFoundException("Task not found", String.format("Task with id [%d] not found", taskId))
+                new NotFoundException(ErrorMessages.TASK_NOT_FOUND, String.format("Task with id [%d] not found", taskId))
         );
 
         logger.info("Task found [{}]", task);
@@ -96,7 +97,7 @@ public class TaskServiceImpl implements TaskService {
         logger.info("Deleting task with id [{}]", taskId);
 
         Task task = taskRepository.findById(taskId).orElseThrow(() ->
-                new NotFoundException("Task not found", String.format("Task with id [%d] not found", taskId))
+                new NotFoundException(ErrorMessages.TASK_NOT_FOUND, String.format("Task with id [%d] not found", taskId))
         );
 
         taskRepository.delete(task);

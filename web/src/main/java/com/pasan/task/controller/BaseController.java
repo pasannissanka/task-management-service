@@ -1,5 +1,6 @@
 package com.pasan.task.controller;
 
+import com.pasan.task.beans.constants.ErrorMessages;
 import com.pasan.task.beans.dtos.ResponseDto;
 import com.pasan.task.beans.exceptions.NotFoundException;
 import org.slf4j.Logger;
@@ -46,7 +47,7 @@ public class BaseController {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(ResponseDto.error("Validation Error", errors.toString()));
+                .body(ResponseDto.error(ErrorMessages.VALIDATION_ERROR, errors.toString()));
     }
 
     @ExceptionHandler({Exception.class})
@@ -56,6 +57,6 @@ public class BaseController {
 
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ResponseDto.error("Internal Server Error", ex.getMessage()));
+                .body(ResponseDto.error(ErrorMessages.INTERNAL_SERVER_ERROR, ex.getMessage()));
     }
 }
