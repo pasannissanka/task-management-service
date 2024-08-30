@@ -43,7 +43,7 @@ public class TaskServiceImpl implements TaskService {
                         .build()
         );
 
-        logger.info("Task created with id [{}]", task.getId());
+        logger.info("Task created with id [{}] data [{}]", task.getId(), task);
         return TaskDto.from(task);
     }
 
@@ -54,18 +54,21 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public TaskDto updateTask(Long taskId, TaskDto taskDto) {
-        logger.info("Updating task with id [{}]", taskId);
+        logger.info("Updating task with id [{}], data [{}]", taskId, taskDto);
 
         Task task = taskRepository.findById(taskId).orElseThrow(() ->
                 new NotFoundException("Task not found", String.format("Task with id [%d] not found", taskId))
         );
+        logger.debug("Task found [{}]", task);
+
         task.setName(taskDto.getName());
         task.setDescription(taskDto.getDescription());
         task.setPriority(taskDto.getPriority().name());
         task.setCompleted(taskDto.getCompleted());
 
-        logger.info("Task updated with id [{}]", task.getId());
-        return TaskDto.from(taskRepository.save(task));
+        Task updatedTask = taskRepository.save(task);
+        logger.info("Task updated with id [{}] data [{}]", updatedTask.getId(), updatedTask);
+        return TaskDto.from(updatedTask);
     }
 
     /**
